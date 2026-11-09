@@ -96,7 +96,7 @@ class LargeEventSeeder extends Seeder
                     'updated_at' => $now,
                 ];
             }
-            DB::table('event_participant')->insert($rows);
+           DB::table('event_participant')->insertOrIgnore($rows);
         }
     }
 }

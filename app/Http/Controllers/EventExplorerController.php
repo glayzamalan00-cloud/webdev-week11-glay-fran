@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class EventExplorerController extends Controller
 {
     // NAIVE: lazy loading (sinadya, para mabilang ang N+1)
-    public function naive()
+        public function naive()
     {
         Model::preventLazyLoading(false);
         DB::enableQueryLog();

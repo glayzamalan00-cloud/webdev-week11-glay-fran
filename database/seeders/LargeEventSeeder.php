@@ -84,8 +84,12 @@ class LargeEventSeeder extends Seeder
         }
 
         // Registrations para sa unang 100 events (event_participant)
-        $firstEventIds = DB::table('events')->orderBy('id')->limit(100)->pluck('id');
-        foreach ($firstEventIds as $eventId) {
+        $firstEventIds = DB::table('events')
+        ->where(function ($q) {
+             $q->where('id', '<=', 100)->orWhereRaw('id % 5 = 0');
+           })
+            ->pluck('id');
+            foreach ($firstEventIds as $eventId) {
             $rows = [];
             foreach (fake()->randomElements($participantIds, rand(5, 30)) as $pid) {
                 $rows[] = [

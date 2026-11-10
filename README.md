@@ -32,7 +32,7 @@ All indexes are in the migration `add_indexes_to_events_table`, so they survive 
 
 ## Step 9: Choosing columns
 - JSONB (`details`): the dress code (also capacity and tags). Each event can have different extra information, and a new key can be added without a new migration.
-- Normal column (`starts_at`): the event's start date and time. It is used for sorting and filtering on every list, so it needs a proper date/time type.
+- Normal column (`starts_at`): the event's start date and time. It is used for sorting and filtering on every list, so it needs a proper date\time type.
 
 ## Scopes in Event model
 | Scope | What it does |
@@ -42,3 +42,9 @@ All indexes are in the migration `add_indexes_to_events_table`, so they survive 
 | dressCode($code) | Events whose details dress_code equals $code |
 | search($term) | Full-text search on description |
 | forList() | Eager loads venue and adds participants_count |
+
+
+
+
+
+Chained example from index(): Event::upcoming()->earliestFirst()->forList()->limit(50)->get().

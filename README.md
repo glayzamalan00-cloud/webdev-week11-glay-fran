@@ -3,8 +3,8 @@
 ## Step 4: Query counts
 | Version | Route | Queries sent |
 |---|---|---|
-| Naive (lazy loading) | /events/naive | 101 |
-| Fixed (eager loading + withCount) | /events | 2 |
+| Naive (lazy loading) | \events\naive | 101 |
+| Fixed (eager loading + withCount) | \events | 2 |
 
 Explanation: The naive version sent 101 queries because it ran one query for the 50 events, then one more per event for its venue and one more per event for its participants. The fixed version sent 2 queries because `with('venue')` loads all the venues at once and `withCount('participants')` adds the count inside the main events query.
 
